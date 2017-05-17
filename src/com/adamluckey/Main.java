@@ -21,6 +21,9 @@ public class Main {
 class Countdown {
 
     private int i;
+    // could add synchronized to the method to avoid a race condition
+    // this makes sure that the method is only used by 1 thread at a time
+    // public synchronized void doCountDown() {
     public void doCountDown() {
         String color;
         switch (Thread.currentThread().getName()) {
