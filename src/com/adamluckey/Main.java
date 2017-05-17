@@ -21,6 +21,7 @@ public class Main {
 class Countdown {
 
     private int i;
+
     // could add synchronized to the method to avoid a race condition
     // this makes sure that the method is only used by 1 thread at a time
     // public synchronized void doCountDown() {
@@ -41,9 +42,13 @@ class Countdown {
         // to have an instance of i to keep integers printing individual values for each thread
         // the current iteration may cause singular and duplicate results depending on when
         // each thread is suspended such as during the decrement or the println, i.e race condition
-        for (i = 10; i > 0; i--) {
-            System.out.println(color + Thread.currentThread().getName() + ": i = " + i);
-        }
+
+        // you could add a synchronized statement here as well to enforce synchronization
+        //synchronized (this) {
+            for (i = 10; i > 0; i--) {
+                System.out.println(color + Thread.currentThread().getName() + ": i = " + i);
+            }
+       // }
     }
 }
 
